@@ -11,4 +11,12 @@ if __name__ == '__main__':
     # 检测的目标类别个数，不包括背景
     parser.add_argument('--num_classes', default=20, type=int, help='num_classes')
     # 训练数据集的根目录
-    parser.add_argument('--data_path', default='./', hel)
+    parser.add_argument('--data_path', default='./', help='data_path')
+    # 文件保存地址
+    parser.add_argument('--output_dir', default='./', help='path to save')
+    # 若需要接着上次训练，则指定上次训练的权重保存地址
+    parser.add_argument('--resume', default='', type=str, help='resume from checkpoint')
+    # 指定接着从哪个epoch开始训练
+    parser.add_argument('--start_epoch', default=0, type=int, help='start epoch')
+    # 训练的总epoch数
+    
