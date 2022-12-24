@@ -1,4 +1,6 @@
 
+def main(parser_data):
+    
 
 
 if __name__ == '__main__':
@@ -19,4 +21,17 @@ if __name__ == '__main__':
     # 指定接着从哪个epoch开始训练
     parser.add_argument('--start_epoch', default=0, type=int, help='start epoch')
     # 训练的总epoch数
+    parser.add_argument('--epochs', default=15, type=int, metavar='N', help='number of total epochs')
+    # 训练的batch size
+    parser.add_argument('--batch_size', default=4, type=int, metavat='N', help='batch size')
+
+    args = parser.parse_args()
+    print(args)
+
+    # 检查保存权重文件夹是否存在，不存在则创建
+    if not os.path.exists(args.output_dir):
+        os.makedirs(args.output_dir)
+    
+    main(args)
+
     
