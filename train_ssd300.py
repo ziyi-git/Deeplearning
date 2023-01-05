@@ -18,6 +18,10 @@ def create_model(num_classes=21):
     pre_weights_dict = pre_model_dict['model']
 
     # 不加载类别预测器的权重，因为是voc和coco不同，但是可以使用回归预测器的权重
+    # Q：pre_weights_dict是SSD部分，还是resnet50 + SSD。猜测应该只有SSD部分，
+    # 因为resnet50在Backbone()时加载。如果是resnet50 + SSD，那么Backbone()
+    # 中的加载就是画蛇添足。
+    # Q：训练时是否会更新resnet50的权重？
     del_conf_loc_dict = {}
     for k, v in pre_weights_dict.items():
         split_key = k.split('.')
@@ -30,7 +34,7 @@ def create_model(num_classes=21):
         print("missing_keys: ", missing_keys)
         print("unexpected_keys: ", unexpected_keys)
 
-    return model    
+    return model
 
 
 def main(parser_data):
