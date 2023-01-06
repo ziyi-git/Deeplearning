@@ -200,7 +200,3 @@ class Loss(nn.Module):
         pos_num = pos_num.float().clamp(min=1e-6)
         ret = (total_loss * num_mask / pos_num).mean(dim=0)  # 只计算存在正样本的图像损失
         return ret
-
-
-
-
